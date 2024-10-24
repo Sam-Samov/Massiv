@@ -28,7 +28,7 @@ public class _Main {
         }
     }
 
-    public void oddNumbers(int random10Numbers) { //нечётные
+    public void oddNumbers(int random10Numbers) { //нечётные числа
 
     }
 

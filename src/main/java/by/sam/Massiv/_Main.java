@@ -7,12 +7,11 @@ public class _Main {
         System.out.println("Введите длину создаваемого массива:");
         Scanner sc = new Scanner(System.in);
         sc.useLocale(Locale.US);
-        int lenght = 0;
         while (!sc.hasNextInt()) {
             System.out.println("Введите целое число!");
-            var size = sc.next();
+            sc.next();
         }
-        lenght = sc.nextInt();
+        int lenght = sc.nextInt();
         int[] randomNumbers = new int[lenght];
 
         Random x = new Random();

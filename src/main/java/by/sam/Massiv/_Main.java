@@ -16,9 +16,22 @@ public class _Main {
 
         Random x = new Random();
         System.out.println("Введите нижнюю границу случайных чисел массива");
+        while (!sc.hasNextInt()) {
+            System.out.println("Введите целое число!");
+            sc.next();
+        }
         int minNumber = sc.nextInt();
         System.out.println("Введите верхнюю границу случайных чисел массива");
+        while (!sc.hasNextInt()) {
+            System.out.println("Введите целое число!");
+            sc.next();
+        }
         int maxNumber = sc.nextInt();
+        while (maxNumber < minNumber) {
+            System.out.println("Верхняя граница должна быть целым числом и больше нижней границы!");
+            maxNumber = sc.nextInt();
+        }
+
         for (int i = 0; i < randomNumbers.length; i++) {
             randomNumbers[i] = x.nextInt(minNumber, maxNumber);
         }

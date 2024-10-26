@@ -23,7 +23,7 @@ public class _Main {
             randomNumbers[i] = x.nextInt(minNumber, maxNumber);
         }
 
-        System.out.println("Список всех чисел массива: " + Arrays.toString(randomNumbers));// !здесь вывести числа вторым способом
+        System.out.println("Список всех чисел массива: " + Arrays.toString(randomNumbers));
         System.out.println();
         Calculation.evenNumbers(randomNumbers);
         System.out.println();

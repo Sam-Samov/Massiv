@@ -1,6 +1,7 @@
 package by.sam.Massiv;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Calculation {
@@ -23,24 +24,20 @@ public class Calculation {
 
     public static void primeNumbers(int[] massive) { //простые числа
         for (int i = 0; i < massive.length; i++) {
-            if (massive[i] == 2) {
-                System.out.println("Список простых чисел. Ячейка " + i + ": " + massive[i]);
-            } else {
-                if (massive[i] > 2 & primeCheck(massive[i])) {
+                if (primeCheck(massive[i])) {
                     System.out.println("Список простых чисел. Ячейка " + i + ": " + massive[i]);
                 }
-            }
         }
     }
 
     public static boolean primeCheck(int x) {
         int d = 2;
-        if (d < Math.sqrt(x)) {
+        if (x > 2 & d < Math.sqrt(x)) {
             while (x % d != 0) {
                 d = d + 1;
             }
         }
-        return d > Math.sqrt(x);
+        return d > Math.sqrt(x) | x == 2;
     }
 
     public static void sumAll(int[] massive) { //сумма всех чисел
@@ -70,18 +67,38 @@ public class Calculation {
     }
 
     public static void subEvenOdd(int[] massive) { //разница сумм чисел с нечётным и чётным индексом в массиве
-
+        ArrayList<Integer> evenList = new ArrayList<>();
+        for (int i = 0; i < massive.length; i++) {
+            if (massive[i] % 2 == 0) {
+                evenList.add(massive[i]);
+            }
+        }
+        int sumEven = 0;
+        for (int i = 0; i < evenList.size(); i++) {
+            sumEven = sumEven + evenList.get(i);
+        }
+        ArrayList<Integer> oddList = new ArrayList<>();
+        for (int i = 0; i < massive.length; i++) {
+            if (massive[i] % 2 == 1) {
+                oddList.add(massive[i]);
+            }
+        }
+        int sumOdd = 0;
+        for (int i = 0; i < oddList.size(); i++) {
+            sumOdd = sumOdd + oddList.get(i);
+        }
+        int x = sumEven;
+        int y = sumOdd;
+        int sub = x - y;
+        System.out.println("Сумма нечётных чисел: " + x + ". Сумма чётных чисел: " + y + ". Разница: " + sub);
     }
 
     public static void zeroNumbers(int[] massive) { //количество цифры (не число!) 0 в массиве
         String str1 = Arrays.toString(massive);
-        str1 = str1.replace(", ", "");
-        str1 = str1.replace("[", "");
-        str1 = str1.replace("]", "");
+        System.out.println(str1);
         int sum = 0;
         for (int i = 0; i < str1.length(); i++) {
             if (str1.charAt(i) == '0') {
-                System.out.println("Ячейка с цифрой '0': " + i);
                 sum++;
             }
         }

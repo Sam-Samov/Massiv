@@ -1,8 +1,10 @@
 package by.sam.Massiv;
 
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Calculation {
 
@@ -34,7 +36,7 @@ public class Calculation {
         int d = 2;
         if (x > 2 & d < Math.sqrt(x)) {
             while (x % d != 0) {
-                d = d + 1;
+                d++;
             }
         }
         return d > Math.sqrt(x) | x == 2;
@@ -79,7 +81,7 @@ public class Calculation {
         }
         ArrayList<Integer> oddList = new ArrayList<>();
         for (int i = 0; i < massive.length; i++) {
-            if (massive[i] % 2 == 1) {
+            if (massive[i] % 2 != 0) {
                 oddList.add(massive[i]);
             }
         }
@@ -93,7 +95,7 @@ public class Calculation {
         System.out.println("Сумма нечётных чисел: " + x + ". Сумма чётных чисел: " + y + ". Разница: " + sub);
     }
 
-    public static void zeroNumbers(int[] massive) { //количество цифры (не число!) 0 в массиве
+    public static void zeroNumbers(int[] massive) { //количество цифр (не чисел!) "0" в массиве
         String str1 = Arrays.toString(massive);
         System.out.println(str1);
         int sum = 0;
@@ -105,5 +107,37 @@ public class Calculation {
         if (sum > 0) {
             System.out.println("Количество цифр '0' в данном массиве: " + sum);
         } else System.out.println("Цифра '0' не встречается в данном массиве");
+    }
+
+    public static void sortMinMax (int[] massive) { //сортировка массива от min к max
+        int[] sorted = new int[massive.length];
+        int[] clone = massive.clone();
+        int min = 0;
+        for (int i = 0; i < sorted.length; i++) {
+            int itemForDel = 0;
+            min = clone[0];
+            for (int j = 1; j < clone.length; j++) {
+                if (min > clone[j]) {
+                    min = clone[j];
+                    itemForDel = j;
+                }
+            }
+            clone = delItemMassive(clone, itemForDel);
+            sorted[i] = min;
+        }
+        System.out.println("Исходный массив: " + Arrays.toString(massive));
+        System.out.println("Отсортированный от min к max массив: " + Arrays.toString(sorted));
+    }
+
+    public static int[] delItemMassive (int[] massive, int delIndex) { //удалятор элемента с заданным индексом из массива
+        int [] newMassive = new int[massive.length-1];
+        for (int i = 0; i < massive.length; i++) {
+                if (i < delIndex) {
+                    newMassive[i] = massive[i];
+                } else if (i != delIndex) {
+                    newMassive[i-1] = massive[i];
+                }
+        }
+        return newMassive;
     }
 }

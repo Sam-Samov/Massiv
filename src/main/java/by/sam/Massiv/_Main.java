@@ -1,7 +1,6 @@
 package by.sam.Massiv;
 
 import java.util.*;
-import java.util.regex.Pattern;
 
 public class _Main {
     public static void main(String[] args) {
@@ -18,7 +17,7 @@ public class _Main {
 
         Random x = new Random();
         System.out.println("Введите нижнюю границу случайных чисел массива");
-        while (!sc.hasNextInt() | sc.hasNext("0")) {
+        while (!sc.hasNextInt()) {
             System.out.println("Введите целое число!");
             sc.next();
         }
@@ -26,7 +25,7 @@ public class _Main {
 
         System.out.println("Введите верхнюю границу случайных чисел массива");
 
-        while (!sc.hasNextInt() | sc.hasNext("0")) {
+        while (!sc.hasNextInt()) {
             System.out.println("Введите целое число!");
             sc.next();
         }
@@ -54,6 +53,8 @@ public class _Main {
         Calculation.subEvenOdd(randomNumbers);
         System.out.println();
         Calculation.zeroNumbers(randomNumbers);
+        System.out.println();
+        Calculation.sortMinMax(randomNumbers);
     }
 }
 
